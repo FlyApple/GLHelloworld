@@ -16,8 +16,6 @@
 //
 namespace MX { namespace OpenGL {
 
-//
-Engine*	g_pEngine = NULL;
 	
 //
 void ErrorLog(const char* format, ...)
@@ -45,13 +43,12 @@ void OutputLog(const char* format, ...)
 //
 GLboolean Release()
 {
-	if(g_pEngine)
+	if(Engine::getSingletonPtr())
 	{
-		g_pEngine->Release();
+		Engine::getSingletonPtr()->Release();
 		OutputLog("<%s> Engine release ok", __FUNCTION__);
 		
-		DestroyEngineI(g_pEngine);
-		g_pEngine = NULL;
+		DestroyEngineI(Engine::getSingletonPtr());
 	}
 	return GL_TRUE;
 }
@@ -72,19 +69,19 @@ GLboolean Initialize()
 	Support();
 	
 	//
-	g_pEngine = CreateEngineI();
-	if(!g_pEngine)
+	Engine* pEngine = CreateEngineI();
+	if(!pEngine || !Engine::getSingletonPtr())
 	{
 		ErrorLog("<%s> CreateEngine fail (ERROR:%d)", __FUNCTION__, result);
 		return GL_FALSE;
 	}
 	
-	if(!g_pEngine->Initialize())
+	if(!Engine::getSingletonPtr()->Initialize())
 	{
-		DestroyEngineI(g_pEngine);
-		g_pEngine = NULL;
+		DestroyEngineI(pEngine);
+		pEngine = NULL;
 		
-		ErrorLog("<%s> g_pEngine->Initialize fail (ERROR:%d)", __FUNCTION__, result);
+		ErrorLog("<%s> pEngine->Initialize fail (ERROR:%d)", __FUNCTION__, result);
 		return GL_FALSE;
 	}
 	OutputLog("<%s> Engine initialize ok", __FUNCTION__);
@@ -139,9 +136,9 @@ GLboolean Support()
 GLboolean Render()
 {
 	//
-	if (g_pEngine)
+	if (Engine::getSingletonPtr())
 	{
-		g_pEngine->Render();
+		Engine::getSingletonPtr()->Render();
 	}
 	
 	//

@@ -9,8 +9,7 @@
 #include "Precompile.h"
 #include "MyOpenGLEngine.hpp"
 
-//
-using namespace MX;
+
 
 //
 namespace MX {
@@ -44,3 +43,21 @@ MyOpenGLEngine::~MyOpenGLEngine()
 {
 	
 }
+
+GLboolean	MyOpenGLEngine::Release()
+{
+	
+	//
+	OpenGL::Engine::Release();
+	return GL_TRUE;
+}
+
+GLboolean	MyOpenGLEngine::Initialize()
+{
+	if(!OpenGL::Engine::Initialize())
+	{ return GL_FALSE; }
+	
+	//
+	return GL_TRUE;
+}
+

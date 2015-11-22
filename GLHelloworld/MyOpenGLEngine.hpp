@@ -12,11 +12,20 @@
 #include "MXOpenGLEngine.h"
 
 
+//
+using namespace MX;
+
+
+//
 class MyOpenGLEngine : public MX::OpenGL::Engine
 {
 public:
 	MyOpenGLEngine();
 	virtual ~MyOpenGLEngine();
+	
+	//
+	GLboolean	Initialize();
+	GLboolean	Release();
 };
 
 #endif /* MyOpenGLEngine_hpp */
