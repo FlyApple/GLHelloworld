@@ -18,6 +18,7 @@
 		3BCC58311C00CA8B00F7F209 /* MXOpenGLApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC58301C00CA8B00F7F209 /* MXOpenGLApple.mm */; };
 		3BCC58361C01184800F7F209 /* MyOpenGLEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC58341C01184800F7F209 /* MyOpenGLEngine.cpp */; };
 		3BCC58391C01192400F7F209 /* MXOpenGLEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC58371C01192400F7F209 /* MXOpenGLEngine.cpp */; };
+		3BDA75971C021D2C00DC83AD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3BDA75961C021D2C00DC83AD /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3BCC58381C01192400F7F209 /* MXOpenGLEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLEngine.h; sourceTree = "<group>"; };
 		3BDA75941C0203B400DC83AD /* MXOpenGLApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLApple.h; sourceTree = "<group>"; };
 		3BDA75951C0203B400DC83AD /* MXOpenGLPrecompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLPrecompile.h; sourceTree = "<group>"; };
+		3BDA75961C021D2C00DC83AD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		3B83EBB71BFF469500331547 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3BDA75961C021D2C00DC83AD /* README.md */,
 				3B83EBB41BFF469500331547 /* AppDelegate.h */,
 				3B83EBB51BFF469500331547 /* AppDelegate.mm */,
 				3B83EBBF1BFF469500331547 /* Info.plist */,
@@ -214,6 +217,7 @@
 				3BCC58391C01192400F7F209 /* MXOpenGLEngine.cpp in Sources */,
 				3B83EBB61BFF469500331547 /* AppDelegate.mm in Sources */,
 				3BCC58361C01184800F7F209 /* MyOpenGLEngine.cpp in Sources */,
+				3BDA75971C021D2C00DC83AD /* README.md in Sources */,
 				3B83EBDB1BFF9EF900331547 /* MXOpenGLUtility.cpp in Sources */,
 				3B83EBD81BFF994A00331547 /* Precompile.cpp in Sources */,
 			);
