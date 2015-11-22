@@ -14,8 +14,8 @@
 		3B83EBCC1BFF55A900331547 /* libglew_d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B83EBCB1BFF55A900331547 /* libglew_d.a */; };
 		3B83EBD31BFF8B2100331547 /* MXOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B83EBD21BFF8B2100331547 /* MXOpenGLView.mm */; };
 		3B83EBD81BFF994A00331547 /* Precompile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B83EBD71BFF994A00331547 /* Precompile.cpp */; };
-		3B83EBDB1BFF9EF900331547 /* MXOpenGLUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B83EBD91BFF9EF900331547 /* MXOpenGLUtil.cpp */; };
-		3BCC58311C00CA8B00F7F209 /* MXOpenGLUtilApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC58301C00CA8B00F7F209 /* MXOpenGLUtilApple.mm */; };
+		3B83EBDB1BFF9EF900331547 /* MXOpenGLUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B83EBD91BFF9EF900331547 /* MXOpenGLUtility.cpp */; };
+		3BCC58311C00CA8B00F7F209 /* MXOpenGLApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC58301C00CA8B00F7F209 /* MXOpenGLApple.mm */; };
 		3BCC58361C01184800F7F209 /* MyOpenGLEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC58341C01184800F7F209 /* MyOpenGLEngine.cpp */; };
 		3BCC58391C01192400F7F209 /* MXOpenGLEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC58371C01192400F7F209 /* MXOpenGLEngine.cpp */; };
 /* End PBXBuildFile section */
@@ -33,15 +33,15 @@
 		3B83EBD11BFF8B2100331547 /* MXOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLView.h; sourceTree = "<group>"; };
 		3B83EBD21BFF8B2100331547 /* MXOpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MXOpenGLView.mm; sourceTree = "<group>"; };
 		3B83EBD71BFF994A00331547 /* Precompile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Precompile.cpp; sourceTree = "<group>"; };
-		3B83EBD91BFF9EF900331547 /* MXOpenGLUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MXOpenGLUtil.cpp; sourceTree = "<group>"; };
-		3B83EBDA1BFF9EF900331547 /* MXOpenGLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLUtil.h; sourceTree = "<group>"; };
-		3BCC58301C00CA8B00F7F209 /* MXOpenGLUtilApple.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MXOpenGLUtilApple.mm; sourceTree = "<group>"; };
+		3B83EBD91BFF9EF900331547 /* MXOpenGLUtility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MXOpenGLUtility.cpp; sourceTree = "<group>"; };
+		3B83EBDA1BFF9EF900331547 /* MXOpenGLUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLUtility.h; sourceTree = "<group>"; };
+		3BCC58301C00CA8B00F7F209 /* MXOpenGLApple.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MXOpenGLApple.mm; sourceTree = "<group>"; };
 		3BCC58341C01184800F7F209 /* MyOpenGLEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyOpenGLEngine.cpp; sourceTree = "<group>"; };
 		3BCC58351C01184800F7F209 /* MyOpenGLEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MyOpenGLEngine.hpp; sourceTree = "<group>"; };
 		3BCC58371C01192400F7F209 /* MXOpenGLEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MXOpenGLEngine.cpp; sourceTree = "<group>"; };
 		3BCC58381C01192400F7F209 /* MXOpenGLEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLEngine.h; sourceTree = "<group>"; };
-		3BDA75941C0203B400DC83AD /* MXOpenGLUtilApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLUtilApple.h; sourceTree = "<group>"; };
-		3BDA75951C0203B400DC83AD /* MXOpenGLUtilPrecompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLUtilPrecompile.h; sourceTree = "<group>"; };
+		3BDA75941C0203B400DC83AD /* MXOpenGLApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLApple.h; sourceTree = "<group>"; };
+		3BDA75951C0203B400DC83AD /* MXOpenGLPrecompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLPrecompile.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,11 +110,11 @@
 		3B83EBDF1BFFB9F000331547 /* opengl_util */ = {
 			isa = PBXGroup;
 			children = (
-				3BCC58301C00CA8B00F7F209 /* MXOpenGLUtilApple.mm */,
-				3BDA75951C0203B400DC83AD /* MXOpenGLUtilPrecompile.h */,
-				3BDA75941C0203B400DC83AD /* MXOpenGLUtilApple.h */,
-				3B83EBDA1BFF9EF900331547 /* MXOpenGLUtil.h */,
-				3B83EBD91BFF9EF900331547 /* MXOpenGLUtil.cpp */,
+				3BCC58301C00CA8B00F7F209 /* MXOpenGLApple.mm */,
+				3BDA75951C0203B400DC83AD /* MXOpenGLPrecompile.h */,
+				3BDA75941C0203B400DC83AD /* MXOpenGLApple.h */,
+				3B83EBDA1BFF9EF900331547 /* MXOpenGLUtility.h */,
+				3B83EBD91BFF9EF900331547 /* MXOpenGLUtility.cpp */,
 				3BCC58371C01192400F7F209 /* MXOpenGLEngine.cpp */,
 				3BCC58381C01192400F7F209 /* MXOpenGLEngine.h */,
 			);
@@ -208,13 +208,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BCC58311C00CA8B00F7F209 /* MXOpenGLUtilApple.mm in Sources */,
+				3BCC58311C00CA8B00F7F209 /* MXOpenGLApple.mm in Sources */,
 				3B83EBB91BFF469500331547 /* main.m in Sources */,
 				3B83EBD31BFF8B2100331547 /* MXOpenGLView.mm in Sources */,
 				3BCC58391C01192400F7F209 /* MXOpenGLEngine.cpp in Sources */,
 				3B83EBB61BFF469500331547 /* AppDelegate.mm in Sources */,
 				3BCC58361C01184800F7F209 /* MyOpenGLEngine.cpp in Sources */,
-				3B83EBDB1BFF9EF900331547 /* MXOpenGLUtil.cpp in Sources */,
+				3B83EBDB1BFF9EF900331547 /* MXOpenGLUtility.cpp in Sources */,
 				3B83EBD81BFF994A00331547 /* Precompile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

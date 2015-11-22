@@ -9,7 +9,7 @@
 #import "Precompile.h"
 #import "MXOpenGLView.h"
 
-#import "MXOpenGLUtilApple.h"
+#import "MXOpenGLApple.h"
 
 //
 @implementation MXOpenGLView

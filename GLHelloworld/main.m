@@ -8,7 +8,7 @@
 
 #include "Precompile.h"
 #include "AppDelegate.h"
-#include "MXOpenGLUtilApple.h"
+#include "MXOpenGLApple.h"
 
 //
 int main(int argc, const char * argv[])

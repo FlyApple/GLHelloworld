@@ -9,8 +9,10 @@
 #ifndef __MXOpenGLEngine_H__
 #define __MXOpenGLEngine_H__
 
+#pragma once
+
 //
-#include "MXOpenGLUtil.h"
+#include "MXOpenGLUtility.h"
 
 //
 namespace MX {

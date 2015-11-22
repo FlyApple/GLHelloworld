@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MXOpenGLUtilApple.h"
+#import "MXOpenGLApple.h"
 
 //
 @interface AppDelegate ()
