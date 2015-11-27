@@ -19,6 +19,29 @@
 //
 #include "MXOpenGLPrecompile.h"
 
+//
+#if defined(__GNUC__)
+
+#define TErrorLog(x,...)	\
+	if(MX::OpenGL::Utility::getSingletonPtr()) \
+	{ MX::OpenGL::Utility::getSingletonPtr()->ErrorLog(x, __VA_ARGS__); }
+#define TOutputLog(x,...)	\
+	if(MX::OpenGL::Utility::getSingletonPtr()) \
+	{ MX::OpenGL::Utility::getSingletonPtr()->OutputLog(x, __VA_ARGS__); }
+
+#else
+
+#define TErrorLog(x,...)	\
+	if(MX::OpenGL::Utility::getSingletonPtr()) \
+	{ MX::OpenGL::Utility::getSingletonPtr()->ErrorLog(x, __VA_ARGS__); }
+#define TOutputLog(x,...)	\
+	if(MX::OpenGL::Utility::getSingletonPtr()) \
+	{ MX::OpenGL::Utility::getSingletonPtr()->OutputLog(x, __VA_ARGS__); }
+
+#endif
+
+#define ERROR_LOG	TErrorLog
+#define OUTPUT_LOG	TOutputLog
 
 //
 #endif /* __Precomplie_H__ */

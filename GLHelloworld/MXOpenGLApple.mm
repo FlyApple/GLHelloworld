@@ -13,32 +13,14 @@
 
 #ifdef __APPLE__
 
-//
-APPKIT_EXTERN int MX_OSX_OpenGLApplicationMain(int argc, const char* argv[])
-{
-	MX_OSX_OpenGLUtil* util = [[MX_OSX_OpenGLUtil new] init];
-	if(![util Initialize])
-	{
-		NSLog(@"<%s> MX OSX OpenGLUtil initialize fail.", __FUNCTION__);
-		return 0;
-	}
-	
-	//
-	int result = NSApplicationMain(argc, argv);
-	
-	//
-	//[util Release];
-	return result;
-}
-
 
 //
-APPKIT_EXTERN void MXGL_CallbackErrorLog(const char* log)
+APPKIT_EXTERN void MX_OSX_CallbackErrorLog(const char* log)
 {
 	NSLog(@"[Error] %@", [[NSString alloc] initWithCString:(const char*)log encoding:NSUTF8StringEncoding]);
 }
 
-APPKIT_EXTERN void MXGL_CallbackOutputLog(const char* log)
+APPKIT_EXTERN void MX_OSX_CallbackOutputLog(const char* log)
 {
 	NSLog(@"[Output] %@", [[NSString alloc] initWithCString:(const char*)log encoding:NSUTF8StringEncoding]);
 }
@@ -48,14 +30,17 @@ namespace MX {
 namespace OpenGL {
 	
 	//
-	MX_CALLBACK_API void ErrorLogI(const char* log)
+	Utility*		g_pUtility	= NULL;
+	
+	//
+	MX_OPENGL_CALLBACK void CBErrorLog(const char* log)
 	{
-		MXGL_CallbackErrorLog(log);
+		MX_OSX_CallbackErrorLog(log);
 	}
 	
-	MX_CALLBACK_API void OutputLogI(const char* log)
+	MX_OPENGL_CALLBACK void CBOutputLog(const char* log)
 	{
-		MXGL_CallbackOutputLog(log);
+		MX_OSX_CallbackOutputLog(log);
 	}
 	
 }; //namespace MX
@@ -99,9 +84,9 @@ static MX_OSX_OpenGLUtil* gs_pOpenGLUtil = NULL;
 -(BOOL)Release
 {
 	//
-	if(!MX::OpenGL::Release())
+	if (!MX::OpenGL::g_pUtility->Release())
 	{
-		NSLog(@"<%s> ReleaseOpenGL fail.", __FUNCTION__);
+		NSLog(@"<%s> OpenGLUtility release fail.", __FUNCTION__);
 		return NO;
 	}
 	
@@ -161,9 +146,12 @@ static MX_OSX_OpenGLUtil* gs_pOpenGLUtil = NULL;
 	CGLSetCurrentContext(m_Context);
 	
 	//
-	if(!MX::OpenGL::Initialize())
+	MX::OpenGL::g_pUtility = new MX::OpenGL::Utility();
+	MX::OpenGL::g_pUtility->SetCallbackOutput(MX::OpenGL::CBOutputLog);
+	MX::OpenGL::g_pUtility->SetCallbackError(MX::OpenGL::CBErrorLog);
+	if (!MX::OpenGL::g_pUtility->Initialize())
 	{
-		NSLog(@"<%s> InitializeOpenGL fail.", __FUNCTION__);
+		NSLog(@"<%s> OpenGLUtility initialize fail.", __FUNCTION__);
 		return NO;
 	}
 	
@@ -175,12 +163,16 @@ static MX_OSX_OpenGLUtil* gs_pOpenGLUtil = NULL;
 {
 	if(m_Context)
 	{
-		MX::OpenGL::Render();
+		[self draw];
 		
 		CGLFlushDrawable(m_Context);
 	}
 }
 
+-(void) draw
+{
+	//nothing
+}
 
 @end
 

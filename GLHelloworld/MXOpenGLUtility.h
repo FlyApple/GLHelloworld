@@ -19,13 +19,19 @@
 
 //
 namespace MX {
-	
-#define MX_CALLBACK_API
-	
 	namespace OpenGL{
 		
 		//
-		class Engine;
+#if defined(__GNUC__)
+		#define MX_OPENGL_CALLBACK
+#elif defined(_MSC_VER)
+		#define MX_OPENGL_CALLBACK		__stdcall
+#else
+		#define MX_OPENGL_CALLBACK
+#endif
+
+		//
+		#define MX_OPENGL_DELETE_POINTER(pointer) if(pointer){ delete pointer; pointer = NULL; }
 		
 		//
 		template<typename _Ty>
@@ -49,21 +55,31 @@ namespace MX {
 		#define SINGLETON_IMPLE(_Ty)	template<typename _Ty>	_Ty* Singleton<_Ty>::ms_Singleton = NULL;
 	
 		//
-		GLboolean Initialize();
-		GLboolean Release();
-		
-		GLboolean Render();
+		typedef void (MX_OPENGL_CALLBACK *CallbackOutput)(const char* text);
 		
 		//
-		GLboolean Support();
+		class Utility : public Singleton<Utility>
+		{
+		public:
+			Utility();
+			virtual ~Utility();
+			
+			virtual bool	Initialize();
+			virtual bool	Release();
+			
+		public:
+			bool	Support();
+			
+			void	ErrorLog(const char* format, ...);
+			void	OutputLog(const char* format, ...);
+			
+			void	SetCallbackOutput(CallbackOutput func){ m_fnCallbackOutput = func; }
+			void	SetCallbackError(CallbackOutput func){ m_fnCallbackError = func; }
+		private:
+			CallbackOutput		m_fnCallbackOutput;
+			CallbackOutput		m_fnCallbackError;
+		};
 		
-		//
-		MX_CALLBACK_API void		ErrorLogI(const char* log);
-		MX_CALLBACK_API void		OutputLogI(const char* log);
-		
-		//
-		MX_CALLBACK_API Engine*		CreateEngineI();
-		MX_CALLBACK_API GLboolean	DestroyEngineI(Engine* pEngine);
 	
 	}; //namespace OpenGL
 }; //namespace MX

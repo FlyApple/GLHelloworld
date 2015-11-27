@@ -7,31 +7,7 @@
 //
 
 #include "Precompile.h"
-#include "MyOpenGLEngine.hpp"
-
-
-
-//
-namespace MX {
-namespace OpenGL {
-	
-	//
-	MX_CALLBACK_API MX::OpenGL::Engine*		CreateEngineI()
-	{
-		return (MX::OpenGL::Engine*)new MyOpenGLEngine();
-	}
-	
-	MX_CALLBACK_API GLboolean	DestroyEngineI(MX::OpenGL::Engine* pEngine)
-	{
-		if(pEngine)
-		{
-			delete pEngine;
-			pEngine = NULL;
-		}
-		return GL_TRUE;
-	}
-}; //namespace OpenGL
-}; //namespace MX
+#include "MyOpenGLEngine.h"
 
 
 //

@@ -13,5 +13,5 @@
 //
 int main(int argc, const char * argv[])
 {
-	return MX_OSX_OpenGLApplicationMain(argc, argv);
+	return NSApplicationMain(argc, argv);
 }

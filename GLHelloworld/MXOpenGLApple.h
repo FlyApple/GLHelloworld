@@ -18,9 +18,6 @@
 typedef CGLContextObj		MX_OSX_OpenGLContext;
 
 //
-APPKIT_EXTERN int MX_OSX_OpenGLApplicationMain(int argc, const char* argv[]);
-
-//
 @interface MX_OSX_OpenGLUtil : NSObject
 {
 @private
@@ -38,6 +35,8 @@ APPKIT_EXTERN int MX_OSX_OpenGLApplicationMain(int argc, const char* argv[]);
 -(BOOL) Release;
 
 -(void) render;
+
+-(void)	draw;
 
 @end
 

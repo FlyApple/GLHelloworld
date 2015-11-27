@@ -6,15 +6,14 @@
 //  Copyright © 2015年 enos sariel. All rights reserved.
 //
 
-#ifndef MyOpenGLEngine_hpp
-#define MyOpenGLEngine_hpp
+#ifndef __MyOpenGLEngine_H__
+#define __MyOpenGLEngine_H__
 
 #include "MXOpenGLEngine.h"
 
 
 //
 using namespace MX;
-
 
 //
 class MyOpenGLEngine : public MX::OpenGL::Engine
@@ -28,4 +27,6 @@ public:
 	GLboolean	Release();
 };
 
-#endif /* MyOpenGLEngine_hpp */
+
+//
+#endif /* __MyOpenGLEngine_H__ */

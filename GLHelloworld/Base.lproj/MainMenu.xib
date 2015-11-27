@@ -52,7 +52,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <openGLView depthSize="16bit" stencilSize="8bit" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" useRecovery="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uTd-C6-JL7" customClass="MXOpenGLView">
+                    <openGLView depthSize="16bit" stencilSize="8bit" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" useRecovery="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uTd-C6-JL7" customClass="MyOpenGLView">
                         <rect key="frame" x="2" y="2" width="796" height="596"/>
                     </openGLView>
                 </subviews>

@@ -8,11 +8,14 @@
 
 //
 #import <Cocoa/Cocoa.h>
+#import "MyOpenGLUtil.h"
+
 
 //
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
 @private
+	MyOpenGLUtil*		m_pOpenGLUtil;
 }
 @end
 

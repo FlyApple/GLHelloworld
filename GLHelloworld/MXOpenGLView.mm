@@ -6,7 +6,7 @@
 //  Copyright © 2015年 enos sariel. All rights reserved.
 //
 
-#import "Precompile.h"
+#import "MXOpenGLPrecompile.h"
 #import "MXOpenGLView.h"
 
 #import "MXOpenGLApple.h"

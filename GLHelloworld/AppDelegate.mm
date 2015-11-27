@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "MXOpenGLApple.h"
 
 //
 @interface AppDelegate ()
@@ -19,6 +18,12 @@
 
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
+	m_pOpenGLUtil = [[MyOpenGLUtil new] init];
+	if(![m_pOpenGLUtil Initialize])
+	{
+		NSLog(@"<%s> OpenGLUtil initialize fail.", __FUNCTION__);
+		return;
+	}
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -29,10 +34,13 @@
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
 	// Insert code here to tear down your application
-	
-	if([MX_OSX_OpenGLUtil SingletonPtr])
+	if(m_pOpenGLUtil)
 	{
-		[[MX_OSX_OpenGLUtil SingletonPtr] Release];
+		if(![m_pOpenGLUtil Release])
+		{
+			NSLog(@"<%s> OpenGLUtil initialize release.", __FUNCTION__);
+		}
+		m_pOpenGLUtil = nil;
 	}
 }
 
