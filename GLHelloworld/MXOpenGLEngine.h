@@ -19,92 +19,60 @@ namespace MX {
 	namespace OpenGL{
 		
 		//
-		class Engine;
-		
-		//
-		class Drawable
-		{
-		public:
-			Drawable(Engine* pEngine = NULL)
-				:	m_pEngine(pEngine)
-			{ };
-			virtual ~Drawable()
-			{ };
-			
-		protected:
-			Engine*		m_pEngine;
-		};
-		
-		//
-		class WIN_Drawable : public Drawable
-		{
-		public:
-			WIN_Drawable(Engine* pEngine = NULL)
-				: Drawable(pEngine)
-			{ };
-			virtual ~WIN_Drawable()
-			{ };
-		};
-		
-		//在osx 中flush仅仅只能执行一次
-		class OSX_Drawable : public Drawable
-		{
-		public:
-			OSX_Drawable(Engine* pEngine = NULL)
-				: Drawable(pEngine)
-			{ };
-			virtual ~OSX_Drawable()
-			{
-				glFlush();
-			};
-		};
-		
-		//
-#if defined(__APPLE__)
-		class DrawableT : public OSX_Drawable
-#else
-		class DrawableT : public WIN_Drawable
-#endif
-		{
-		public:
-			DrawableT(Engine* pEngine = NULL)
-#if defined(__APPLE__)
-				: OSX_Drawable(pEngine)
-#else
-				: WIN_Drawable(pEngine)
-#endif
-			{
-				this->OnBeginDraw();
-			}
-			virtual ~DrawableT()
-			{
-				this->OnEndDraw();
-			}
-			
-			virtual bool	OnBeginDraw();
-			virtual bool	OnEndDraw();
-			virtual bool	OnDraw() { return true; }
-		};
+		class Renderer;
 		
 		//
 		class Engine : public Singleton<Engine>
 		{
-			friend class DrawableT;
+			friend class Renderer;
 		public:
 			Engine();
 			virtual ~Engine();
 			
 			//
-			GLboolean	Initialize();
-			GLboolean	Release();
+			virtual GLboolean	Initialize();
+			virtual GLboolean	Release();
 			
-			GLvoid		Render();
+			virtual GLvoid		Render();
+			
+			void		SetClearBackgroundColor(float red = 0.0f, float green = 0.0f, float blue = 0.1f, float alpha = 0.0f);
+			void		SetClearMask(int mask = GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
+			void		ClearBackground(float red = 0.0f, float green = 0.0f, float blue = 0.1f, float alpha = 0.0f);
+			void		ClearMask(int mask = GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
 			
 		protected:
-			virtual void	ClearBackground(float red = 0.0f, float green = 0.0f, float blue = 0.1f, float alpha = 0.0f);
-			virtual void	ClearMask(int mask = GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
+			virtual void	OnClearBackground( );
+			virtual void	OnClearMask( );
+			
+		private:
+			float		m_fClearBackgroundColor[4];
+			int			m_nClearMask;
 		};
+		
+		//
+		__inline void	Engine::SetClearBackgroundColor(float red, float green, float blue, float alpha)
+		{
+			m_fClearBackgroundColor[0] = red;
+			m_fClearBackgroundColor[1] = green;
+			m_fClearBackgroundColor[2] = blue;
+			m_fClearBackgroundColor[3] = alpha;
+		}
+		
+		__inline void	Engine::SetClearMask(int mask)
+		{
+			m_nClearMask = mask;
+		}
 
+		__inline void	Engine::ClearBackground(float red, float green, float blue, float alpha)
+		{
+			glClearColor(red, green, blue, alpha);
+		}
+		
+		__inline void	Engine::ClearMask(int mask)
+		{
+			glClear(mask);
+		}
+		
 	}; //namespace OpenGL
 }; //namespace MX
 

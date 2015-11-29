@@ -9,8 +9,10 @@
 #ifndef __MyOpenGLEngine_H__
 #define __MyOpenGLEngine_H__
 
+#include "MXOpenGLRenderer.h"
 #include "MXOpenGLEngine.h"
 
+#include "MXOpenGLGeometry.h"
 
 //
 using namespace MX;
@@ -23,8 +25,13 @@ public:
 	virtual ~MyOpenGLEngine();
 	
 	//
-	GLboolean	Initialize();
-	GLboolean	Release();
+	virtual GLboolean	Initialize();
+	virtual GLboolean	Release();
+	
+	virtual GLvoid		Render();
+	
+private:
+	MX::OpenGL::Triangle*	m_pTriangle;
 };
 
 

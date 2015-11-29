@@ -8,14 +8,14 @@
 
 //
 #import <Cocoa/Cocoa.h>
-#import "MyOpenGLUtil.h"
+#import "MyOpenGLUtility.h"
 
 
 //
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
 @private
-	MyOpenGLUtil*		m_pOpenGLUtil;
+	MyOpenGLUtility*		m_pOpenGLUtility;
 }
 @end
 

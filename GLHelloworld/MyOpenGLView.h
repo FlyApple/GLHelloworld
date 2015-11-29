@@ -9,5 +9,9 @@
 #import "MXOpenGLView.h"
 
 @interface MyOpenGLView : MXOpenGLView
+{
+@private
+}
+
 
 @end

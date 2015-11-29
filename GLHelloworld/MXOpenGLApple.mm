@@ -47,38 +47,143 @@ namespace OpenGL {
 }; //namespace OpenGL
 
 
-//
-static MX_OSX_OpenGLUtil* gs_pOpenGLUtil = NULL;
 
 //
-@implementation MX_OSX_OpenGLUtil
+@implementation MX_OSX_OpenGLContext
 
-+(MX_OSX_OpenGLUtil*) SingletonPtr
+@synthesize pixelFormatObj = m_PixelFormatObj;
+-(CGLPixelFormatObj)pixelFormatObj
 {
-	return gs_pOpenGLUtil;
+	return m_PixelFormatObj;
 }
 
--(MX_OSX_OpenGLUtil*)init
+@synthesize contextObj = m_ContextObj;
+-(CGLContextObj)contextObj
+{
+	return m_ContextObj;
+}
+
+- (MX_OSX_OpenGLContext*)init
+{
+	self = [super init];
+	if (self != nil)
+	{
+		[self InitializeCGL];
+	}
+	return self;
+}
+
+- (void)dealloc
+{
+	[self ReleaseCGL];
+}
+
+- (BOOL)ReleaseCGL
+{
+	if(m_ContextObj)
+	{
+		CGLContextObj	ContextObj = CGLGetCurrentContext();
+		if(ContextObj == m_ContextObj)
+		{
+			CGLSetCurrentContext(NULL);
+		}
+		
+		CGLReleaseContext(m_ContextObj);
+		m_ContextObj = NULL;
+	}
+	
+	if(m_PixelFormatObj)
+	{
+		//CGLDestroyPixelFormat : Calling this function is equivalent to calling CGLReleasePixelFormat.
+		CGLReleasePixelFormat(m_PixelFormatObj);
+		m_PixelFormatObj = NULL;
+	}
+	return YES;
+}
+
+- (BOOL)InitializeCGL
+{
+	//
+	CGLPixelFormatAttribute attributes[] =
+	{
+		//From : OpenGL Programming Guide for Apple's Mac
+		//kCGLOGLPVersion_Legacy (OSX 10.7) choose a renderer compatible with OpenGL1.0
+		//kCGLOGLPVersion_GL3_Core (OSX 10.7) choose a renderer capable of OpenGL3.2 or later
+		//kCGLOGLPVersion_GL4_Core (OSX 10.9) choose a renderer capable of OpenGL4.1 or later
+		kCGLPFAOpenGLProfile, (CGLPixelFormatAttribute)kCGLOGLPVersion_3_2_Core,
+		kCGLPFAColorSize, (CGLPixelFormatAttribute)32,
+		kCGLPFAAlphaSize, (CGLPixelFormatAttribute)8,
+		kCGLPFADepthSize, (CGLPixelFormatAttribute)16,
+		kCGLPFAStencilSize, (CGLPixelFormatAttribute)8,
+		kCGLPFAAccelerated,
+		kCGLPFADoubleBuffer,
+		(CGLPixelFormatAttribute)0
+	};
+	
+	//
+	GLint	nPixelFormatNum	= 0;
+	m_PixelFormatObj		= NULL;
+	CGLError result = CGLChoosePixelFormat(attributes, &m_PixelFormatObj, &nPixelFormatNum);
+	if (result != kCGLNoError || m_PixelFormatObj == NULL)
+	{
+		NSLog(@"<%s> CGLChoosePixelFormat fail [ERROR %d]", __FUNCTION__, result);
+		return NO;
+	}
+
+	m_ContextObj			= NULL;
+	result = CGLCreateContext(m_PixelFormatObj, NULL, &m_ContextObj);
+	if (result != kCGLNoError || m_ContextObj == NULL)
+	{
+		NSLog(@"<%s> CGLCreateContext fail [ERROR %d]", __FUNCTION__, result);
+		return NO;
+	}
+	
+	//
+	result = CGLSetCurrentContext(m_ContextObj);
+	
+	//
+	return YES;
+}
+
+-(void) render
+{
+	if(m_ContextObj)
+	{
+		if([MX_OSX_OpenGLUtility SingletonPtr])
+		{
+			[[MX_OSX_OpenGLUtility SingletonPtr] draw];
+		}
+		CGLFlushDrawable(m_ContextObj);
+	}
+}
+
+@end
+
+//
+static MX_OSX_OpenGLUtility* gs_pOpenGLUtility = NULL;
+
+//
+@implementation MX_OSX_OpenGLUtility
+
++(MX_OSX_OpenGLUtility*) SingletonPtr
+{
+	return gs_pOpenGLUtility;
+}
+
+-(MX_OSX_OpenGLUtility*)init
 {
 	self = [super init];
 	if(self)
 	{
-		m_Context = NULL;
 	}
 	
-	gs_pOpenGLUtil = self;
+	gs_pOpenGLUtility = self;
 	return self;
 }
 
 -(void)dealloc
 {
-	gs_pOpenGLUtil = NULL;
-}
-
-@synthesize context = m_Context;
--(MX_OSX_OpenGLContext)context
-{
-	return m_Context;
+	gs_pOpenGLUtility = NULL;
 }
 
 -(BOOL)Release
@@ -90,61 +195,11 @@ static MX_OSX_OpenGLUtil* gs_pOpenGLUtil = NULL;
 		return NO;
 	}
 	
-	//
-	CGLSetCurrentContext(NULL);
-	if(m_Context)
-	{
-		CGLReleaseContext(m_Context);
-		m_Context = NULL;
-	}
 	return YES;
 }
 
 -(BOOL)Initialize
-{
-	//
-	CGLPixelFormatAttribute attributes[] =
-	{
-		//From : OpenGL Programming Guide for Apple's Mac
-		//kCGLOGLPVersion_Legacy (OSX 10.7) choose a renderer compatible with OpenGL1.0
-		//kCGLOGLPVersion_GL3_Core (OSX 10.7) choose a renderer capable of OpenGL3.2 or later
-		//kCGLOGLPVersion_GL4_Core (OSX 10.9) choose a renderer capable of OpenGL4.1 or later
-		kCGLPFAOpenGLProfile, (CGLPixelFormatAttribute)kCGLOGLPVersion_GL3_Core,
-		kCGLPFAColorSize, (CGLPixelFormatAttribute)24,
-		kCGLPFAAlphaSize, (CGLPixelFormatAttribute)8,
-		kCGLPFADepthSize, (CGLPixelFormatAttribute)16,
-		kCGLPFAStencilSize, (CGLPixelFormatAttribute)8,
-		kCGLPFAAccelerated,
-		kCGLPFADoubleBuffer,
-		(CGLPixelFormatAttribute)0
-	};
-	
-	//
-	GLint				nPixFormatNum	= 0;
-	CGLPixelFormatObj	PixFormatObj	= NULL;
-	CGLError result = CGLChoosePixelFormat(attributes, &PixFormatObj, &nPixFormatNum);
-	if (result != kCGLNoError || PixFormatObj == NULL)
-	{
-		NSLog(@"<%s> CGLChoosePixelFormat fail [ERROR %d]", __FUNCTION__, result);
-		return NO;
-	}
-	
-	//
-	CGLContextObj		ContextObj		= NULL;
-	result = CGLCreateContext(PixFormatObj, NULL, &ContextObj);
-	if (result != kCGLNoError || ContextObj == NULL)
-	{
-		NSLog(@"<%s> CGLCreateContext fail [ERROR %d]", __FUNCTION__, result);
-		return NO;
-	}
-	m_Context = ContextObj;
-	
-	//CGLDestroyPixelFormat : Calling this function is equivalent to calling CGLReleasePixelFormat.
-	CGLReleasePixelFormat(PixFormatObj);
-	
-	//
-	CGLSetCurrentContext(m_Context);
-	
+{	
 	//
 	MX::OpenGL::g_pUtility = new MX::OpenGL::Utility();
 	MX::OpenGL::g_pUtility->SetCallbackOutput(MX::OpenGL::CBOutputLog);
@@ -157,16 +212,6 @@ static MX_OSX_OpenGLUtil* gs_pOpenGLUtil = NULL;
 	
 	//
 	return YES;
-}
-
--(void) render
-{
-	if(m_Context)
-	{
-		[self draw];
-		
-		CGLFlushDrawable(m_Context);
-	}
 }
 
 -(void) draw

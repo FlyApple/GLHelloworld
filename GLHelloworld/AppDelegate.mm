@@ -18,8 +18,8 @@
 
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
-	m_pOpenGLUtil = [[MyOpenGLUtil new] init];
-	if(![m_pOpenGLUtil Initialize])
+	m_pOpenGLUtility = [[MyOpenGLUtility new] init];
+	if(![m_pOpenGLUtility Initialize])
 	{
 		NSLog(@"<%s> OpenGLUtil initialize fail.", __FUNCTION__);
 		return;
@@ -34,13 +34,13 @@
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
 	// Insert code here to tear down your application
-	if(m_pOpenGLUtil)
+	if(m_pOpenGLUtility)
 	{
-		if(![m_pOpenGLUtil Release])
+		if(![m_pOpenGLUtility Release])
 		{
 			NSLog(@"<%s> OpenGLUtil initialize release.", __FUNCTION__);
 		}
-		m_pOpenGLUtil = nil;
+		m_pOpenGLUtility = nil;
 	}
 }
 

@@ -8,7 +8,7 @@
 
 #import "MXOpenGLApple.h"
 
-@interface MyOpenGLUtil : MX_OSX_OpenGLUtil
+@interface MyOpenGLUtility : MX_OSX_OpenGLUtility
 {
 	
 }

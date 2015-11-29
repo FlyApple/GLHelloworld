@@ -9,33 +9,25 @@
 
 #include "MXOpenGLPrecompile.h"
 #include "MXOpenGLEngine.h"
+#include "MXOpenGLRenderer.h"
+
 
 //
 namespace MX {
 	namespace OpenGL{
 		
 		//
-		bool	DrawableT::OnBeginDraw()
-		{
-			if(m_pEngine)
-			{
-				m_pEngine->ClearBackground();
-				m_pEngine->ClearMask();
-			}
-			return true;
-		}
-		
-		bool	DrawableT::OnEndDraw()
-		{
-			return true;
-		}
-		
-		
-		//
 		SINGLETON_IMPLE(Engine);
 		Engine::Engine()
 		{
-		
+			//clear background color:
+			m_fClearBackgroundColor[0]	= 0.0f;	//Red
+			m_fClearBackgroundColor[1]	= 0.0f;	//Green
+			m_fClearBackgroundColor[2]	= 0.1f;	//Blue
+			m_fClearBackgroundColor[3]	= 0.0f;	//Alpha
+			
+			//clear mask:
+			m_nClearMask				= GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT;
 		}
 		
 		Engine::~Engine()
@@ -54,21 +46,24 @@ namespace MX {
 		
 		GLvoid		Engine::Render()
 		{
-			DrawableT	drawable(this);
-			if(drawable.OnDraw())
+			RendererT	renderer(this);
+			if(renderer.OnDraw())
 			{
 				//nothing
 			}
 		}
 		
-		void		Engine::ClearBackground(float red, float green, float blue, float alpha)
+		void		Engine::OnClearBackground( )
 		{
-			glClearColor(red, green, blue, alpha);
+			this->ClearBackground(m_fClearBackgroundColor[0],
+								  m_fClearBackgroundColor[1],
+								  m_fClearBackgroundColor[2],
+								  m_fClearBackgroundColor[3]);
 		}
 		
-		void		Engine::ClearMask(int mask)
+		void		Engine::OnClearMask( )
 		{
-			glClear(mask);
+			this->ClearMask(m_nClearMask);
 		}
 	}; //namespace OpenGL
 }; //namespace MX

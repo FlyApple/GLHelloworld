@@ -88,7 +88,27 @@ namespace MX { namespace OpenGL {
 					  !glewIsSupported(versions[i][1]) ? "not" : "");
 		}
 		
+		//
+		const char* extensions[] =
+		{
+			"GL_EXT_vertex_array_bgra",		//opengl 2.1
+			NULL,
+		};
+
+		for (int i = 0; extensions[i] != NULL; i++)
+		{
+			GLboolean result = glewIsExtensionSupported(extensions[i]);
+			if(!result)
+			{
+				OutputLog("[MXOpenGLUtil] OpenGL extension not support: %s", extensions[i]);
+			}
+		}
 		
+		const char* extensions_text = (const char*)glGetString(GL_EXTENSIONS);
+		if(extensions_text)
+		{
+			return GL_FALSE;
+		}
 		//
 		return GL_TRUE;
 	}

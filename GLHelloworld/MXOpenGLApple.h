@@ -14,27 +14,34 @@
 
 #ifdef __APPLE__
 
-//
-typedef CGLContextObj		MX_OSX_OpenGLContext;
-
-//
-@interface MX_OSX_OpenGLUtil : NSObject
+@interface MX_OSX_OpenGLContext : NSObject
 {
 @private
-	MX_OSX_OpenGLContext		m_Context;
+	CGLPixelFormatObj	m_PixelFormatObj;
+	CGLContextObj		m_ContextObj;
 }
 
 //
-@property(assign,readonly) MX_OSX_OpenGLContext context;
+@property(assign,readonly) CGLPixelFormatObj	pixelFormatObj;
+@property(assign,readonly) CGLContextObj		contextObj;
+
+
+-(void) render;
+
+@end
+
 
 //
-+(MX_OSX_OpenGLUtil*) SingletonPtr; //定义静态方法
+@interface MX_OSX_OpenGLUtility : NSObject
+{
+}
+
+//
++(MX_OSX_OpenGLUtility*) SingletonPtr; //定义静态方法
 
 //
 -(BOOL) Initialize;
 -(BOOL) Release;
-
--(void) render;
 
 -(void)	draw;
 

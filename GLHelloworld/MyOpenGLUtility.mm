@@ -7,8 +7,7 @@
 //
 
 #include "Precompile.h"
-#include "MXOpenGLUtility.h"
-#include "MyOpenGLUtil.h"
+#include "MyOpenGLUtility.h"
 #include "MyOpenGLEngine.h"
 
 
@@ -16,7 +15,7 @@
 MyOpenGLEngine*		g_pEngine = NULL;
 
 //
-@implementation MyOpenGLUtil
+@implementation MyOpenGLUtility
 
 -(BOOL) Initialize
 {

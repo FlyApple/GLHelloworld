@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B2B0D5B1C08BD9E00F96BCA /* MyOpenGLUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B2B0D5A1C08BD9E00F96BCA /* MyOpenGLUtil.mm */; };
+		3B2B0D5B1C08BD9E00F96BCA /* MyOpenGLUtility.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B2B0D5A1C08BD9E00F96BCA /* MyOpenGLUtility.mm */; };
 		3B2B0D5E1C08BF2C00F96BCA /* MyOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B2B0D5D1C08BF2C00F96BCA /* MyOpenGLView.mm */; };
 		3B83EBB61BFF469500331547 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B83EBB51BFF469500331547 /* AppDelegate.mm */; };
 		3B83EBB91BFF469500331547 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B83EBB81BFF469500331547 /* main.m */; };
@@ -17,14 +17,16 @@
 		3B83EBD31BFF8B2100331547 /* MXOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B83EBD21BFF8B2100331547 /* MXOpenGLView.mm */; };
 		3B83EBD81BFF994A00331547 /* Precompile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B83EBD71BFF994A00331547 /* Precompile.cpp */; };
 		3B83EBDB1BFF9EF900331547 /* MXOpenGLUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B83EBD91BFF9EF900331547 /* MXOpenGLUtility.cpp */; };
+		3BA75F8A1C08E58800BFC5EB /* MXOpenGLRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BA75F881C08E58800BFC5EB /* MXOpenGLRenderer.cpp */; };
+		3BA75F8D1C08EC3000BFC5EB /* MXOpenGLGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BA75F8B1C08EC3000BFC5EB /* MXOpenGLGeometry.cpp */; };
 		3BCC58311C00CA8B00F7F209 /* MXOpenGLApple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC58301C00CA8B00F7F209 /* MXOpenGLApple.mm */; };
 		3BCC58361C01184800F7F209 /* MyOpenGLEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC58341C01184800F7F209 /* MyOpenGLEngine.cpp */; };
 		3BCC58391C01192400F7F209 /* MXOpenGLEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC58371C01192400F7F209 /* MXOpenGLEngine.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B2B0D591C08BD9E00F96BCA /* MyOpenGLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLUtil.h; sourceTree = "<group>"; };
-		3B2B0D5A1C08BD9E00F96BCA /* MyOpenGLUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyOpenGLUtil.mm; sourceTree = "<group>"; };
+		3B2B0D591C08BD9E00F96BCA /* MyOpenGLUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLUtility.h; sourceTree = "<group>"; };
+		3B2B0D5A1C08BD9E00F96BCA /* MyOpenGLUtility.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyOpenGLUtility.mm; sourceTree = "<group>"; };
 		3B2B0D5C1C08BF2C00F96BCA /* MyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
 		3B2B0D5D1C08BF2C00F96BCA /* MyOpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyOpenGLView.mm; sourceTree = "<group>"; };
 		3B83EBB11BFF469500331547 /* GLHelloworld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLHelloworld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +43,11 @@
 		3B83EBD71BFF994A00331547 /* Precompile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Precompile.cpp; sourceTree = "<group>"; };
 		3B83EBD91BFF9EF900331547 /* MXOpenGLUtility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MXOpenGLUtility.cpp; sourceTree = "<group>"; };
 		3B83EBDA1BFF9EF900331547 /* MXOpenGLUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLUtility.h; sourceTree = "<group>"; };
+		3BA75F871C08DE7D00BFC5EB /* MXOpenGLDrawable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXOpenGLDrawable.h; sourceTree = "<group>"; };
+		3BA75F881C08E58800BFC5EB /* MXOpenGLRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MXOpenGLRenderer.cpp; sourceTree = "<group>"; };
+		3BA75F891C08E58800BFC5EB /* MXOpenGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLRenderer.h; sourceTree = "<group>"; };
+		3BA75F8B1C08EC3000BFC5EB /* MXOpenGLGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MXOpenGLGeometry.cpp; sourceTree = "<group>"; };
+		3BA75F8C1C08EC3000BFC5EB /* MXOpenGLGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXOpenGLGeometry.h; sourceTree = "<group>"; };
 		3BCC58301C00CA8B00F7F209 /* MXOpenGLApple.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MXOpenGLApple.mm; sourceTree = "<group>"; };
 		3BCC58341C01184800F7F209 /* MyOpenGLEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyOpenGLEngine.cpp; sourceTree = "<group>"; };
 		3BCC58351C01184800F7F209 /* MyOpenGLEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLEngine.h; sourceTree = "<group>"; };
@@ -125,6 +132,11 @@
 				3B83EBD91BFF9EF900331547 /* MXOpenGLUtility.cpp */,
 				3BCC58371C01192400F7F209 /* MXOpenGLEngine.cpp */,
 				3BCC58381C01192400F7F209 /* MXOpenGLEngine.h */,
+				3BA75F871C08DE7D00BFC5EB /* MXOpenGLDrawable.h */,
+				3BA75F881C08E58800BFC5EB /* MXOpenGLRenderer.cpp */,
+				3BA75F891C08E58800BFC5EB /* MXOpenGLRenderer.h */,
+				3BA75F8B1C08EC3000BFC5EB /* MXOpenGLGeometry.cpp */,
+				3BA75F8C1C08EC3000BFC5EB /* MXOpenGLGeometry.h */,
 			);
 			name = engine;
 			sourceTree = "<group>";
@@ -143,8 +155,8 @@
 			children = (
 				3BCC58341C01184800F7F209 /* MyOpenGLEngine.cpp */,
 				3BCC58351C01184800F7F209 /* MyOpenGLEngine.h */,
-				3B2B0D591C08BD9E00F96BCA /* MyOpenGLUtil.h */,
-				3B2B0D5A1C08BD9E00F96BCA /* MyOpenGLUtil.mm */,
+				3B2B0D591C08BD9E00F96BCA /* MyOpenGLUtility.h */,
+				3B2B0D5A1C08BD9E00F96BCA /* MyOpenGLUtility.mm */,
 				3B2B0D5C1C08BF2C00F96BCA /* MyOpenGLView.h */,
 				3B2B0D5D1C08BF2C00F96BCA /* MyOpenGLView.mm */,
 			);
@@ -228,8 +240,10 @@
 				3BCC58361C01184800F7F209 /* MyOpenGLEngine.cpp in Sources */,
 				3B83EBDB1BFF9EF900331547 /* MXOpenGLUtility.cpp in Sources */,
 				3B2B0D5E1C08BF2C00F96BCA /* MyOpenGLView.mm in Sources */,
+				3BA75F8A1C08E58800BFC5EB /* MXOpenGLRenderer.cpp in Sources */,
 				3B83EBD81BFF994A00331547 /* Precompile.cpp in Sources */,
-				3B2B0D5B1C08BD9E00F96BCA /* MyOpenGLUtil.mm in Sources */,
+				3B2B0D5B1C08BD9E00F96BCA /* MyOpenGLUtility.mm in Sources */,
+				3BA75F8D1C08EC3000BFC5EB /* MXOpenGLGeometry.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

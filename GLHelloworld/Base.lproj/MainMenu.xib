@@ -52,15 +52,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <openGLView depthSize="16bit" stencilSize="8bit" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" useRecovery="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uTd-C6-JL7" customClass="MyOpenGLView">
-                        <rect key="frame" x="2" y="2" width="796" height="596"/>
-                    </openGLView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="XEr-Mz-Je4" customClass="MyOpenGLView">
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                    </customView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="uTd-C6-JL7" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="2" id="I0F-MT-1fs"/>
-                    <constraint firstAttribute="trailing" secondItem="uTd-C6-JL7" secondAttribute="trailing" constant="2" id="X52-yf-7mB"/>
-                    <constraint firstAttribute="bottom" secondItem="uTd-C6-JL7" secondAttribute="bottom" constant="2" id="hgf-LF-tbf"/>
-                    <constraint firstItem="uTd-C6-JL7" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="2" id="ktQ-sz-qPF"/>
+                    <constraint firstItem="XEr-Mz-Je4" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="28a-Qj-Qqq"/>
+                    <constraint firstAttribute="bottom" secondItem="XEr-Mz-Je4" secondAttribute="bottom" id="Lpd-Z5-65L"/>
+                    <constraint firstAttribute="trailing" secondItem="XEr-Mz-Je4" secondAttribute="trailing" id="Mll-0J-ihV"/>
+                    <constraint firstItem="XEr-Mz-Je4" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="w7c-TT-ADu"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="245" y="77"/>
